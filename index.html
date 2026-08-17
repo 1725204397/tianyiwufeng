@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>天一无缝团队 · 海下蓄能器胶囊的国产领航者</title>
+<!--
+=====================================================================
+  天一无缝团队 · 介绍单页（基于 8.15 汇总 PPT 真实内容）
+  -------------------------------------------------------------------
+  ★★★ 页面自带「可视化编辑模式」，不用碰任何代码：
+
+  1) 点左下角 🛠 按钮进入编辑模式
+       · 直接点击页面任意文字即可修改（标题、简介、卡片内容、数字、页脚……）
+       · 悬停每张卡片 → 右上角出现「⧉ 复制」「✕ 删除」按钮
+       · 每个卡片列表底部有「＋ 新增」按钮
+       · 每个板块右上角有「↑ ↓ 移动」「✕ 删除模块」
+       · 导航栏可增删链接、修改文字
+  2) 点 💾 保存 → 内容存入浏览器本地（localStorage），刷新不丢
+  3) 点 📤 导出 → 下载一份包含当前最新内容的完整 HTML 单文件，
+     可直接替换原文件或发给任何人
+  4) 点 ♻️ 重置 → 清除本地修改，恢复初始模板
+
+  ★ 进阶（改代码时）：
+  · 配色集中在 :root 的 CSS 变量中
+  · 每个模块有「模块开始/结束」注释，便于整段复制
+=====================================================================
+-->
+<style>
+  /* ==================== 全局设计变量 ==================== */
+  :root{
+    --bg:          #081835;
+    --bg-deep:     #060f24;
+    --bg-soft:     #0d2149;
+    --card:        rgba(255,255,255,.045);
+    --card-hover:  rgba(255,255,255,.08);
+    --line:        rgba(255,255,255,.10);
+    --accent:      #4d9fff;
+    --accent-deep: #2f6fe0;
+    --highlight:   #ffd970;
+    --text:        #ffffff;
+    --text-dim:    rgba(255,255,255,.62);
+    --radius:      16px;
+    --maxw:        1120px;
+    --nav-h:       68px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC","Helvetica Neue",Arial,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--highlight);color:#081835}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .hl{color:var(--highlight);font-weight:700}
+
+  /* ==================== 顶部导航 ==================== */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    height:var(--nav-h);
+    background:rgba(8,24,53,.75);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{height:var(--nav-h);display:flex;align-items:center;justify-content:space-between}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.15rem;letter-spacing:1px}
+  .logo .mark{
+    width:34px;height:34px;border-radius:50%;flex:none;
+    background:linear-gradient(135deg,var(--accent),var(--accent-deep));
+    display:flex;align-items:center;justify-content:center;
+    font-size:.95rem;color:#fff;font-weight:900;
+    box-shadow:0 4px 14px rgba(77,159,255,.35);
+  }
+  .logo em{font-style:normal;color:var(--highlight)}
+  .nav-links{display:flex;gap:6px;list-style:none;align-items:center}
+  .nav-links a{
+    padding:8px 16px;border-radius:999px;font-size:.95rem;color:var(--text-dim);
+    transition:.25s;
+  }
+  .nav-links a:hover{color:#fff;background:rgba(255,255,255,.08)}
+  .nav-links a.active{color:var(--highlight);background:rgba(255,217,112,.10)}
+
+  .burger{display:none;background:none;border:0;cursor:pointer;padding:8px}
+  .burger span{display:block;width:24px;height:2px;background:#fff;margin:5px 0;border-radius:2px;transition:.3s}
+  .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .burger.open span:nth-child(2){opacity:0}
+  .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+  /* ==================== Hero 首屏 ==================== */
+  .hero{
+    position:relative;
+    min-height:100svh;
+    display:flex;align-items:center;
+    padding:calc(var(--nav-h) + 40px) 0 60px;
+    background:
+      radial-gradient(900px 500px at 80% -10%, rgba(77,159,255,.20), transparent 60%),
+      radial-gradient(700px 420px at 8% 105%, rgba(47,111,224,.18), transparent 60%),
+      linear-gradient(180deg,var(--bg) 0%,var(--bg-soft) 100%);
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:
+      linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+    background-size:56px 56px;
+    mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,#000 30%,transparent 75%);
+    -webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,#000 30%,transparent 75%);
+  }
+  .hero-inner{position:relative;z-index:1;width:100%}
+  .badge{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:6px 14px;border-radius:999px;
+    border:1px solid rgba(255,217,112,.35);
+    background:rgba(255,217,112,.08);
+    color:var(--highlight);font-size:.85rem;letter-spacing:2px;
+    margin-bottom:22px;
+  }
+  .badge::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--highlight);
+    box-shadow:0 0 10px var(--highlight);animation:pulse 2s infinite}
+  @keyframes pulse{50%{opacity:.35}}
+  .hero h1{
+    font-size:clamp(2rem,5.5vw,3.6rem);
+    line-height:1.25;font-weight:800;letter-spacing:1px;margin-bottom:22px;
+  }
+  .hero p.sub{
+    max-width:640px;color:var(--text-dim);font-size:clamp(1rem,2vw,1.15rem);
+    margin-bottom:34px;
+  }
+  .btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:56px}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:13px 30px;border-radius:999px;font-size:1rem;font-weight:600;
+    transition:.25s;cursor:pointer;border:1px solid transparent;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg,var(--accent),var(--accent-deep));color:#fff;
+    box-shadow:0 8px 24px rgba(77,159,255,.35);
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(77,159,255,.45)}
+  .btn-ghost{border-color:rgba(255,217,112,.45);color:var(--highlight);background:rgba(255,217,112,.06)}
+  .btn-ghost:hover{background:rgba(255,217,112,.14)}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .stat{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px 18px;text-align:center;backdrop-filter:blur(6px);
+  }
+  .stat b{display:block;font-size:clamp(1.5rem,3.2vw,2.1rem);color:var(--highlight);font-weight:800}
+  .stat span{font-size:.85rem;color:var(--text-dim)}
+
+  /* ==================== 通用板块样式 ==================== */
+  section.module{padding:96px 0}
+  section.module.alt{background:var(--bg-soft)}
+  .sec-head{text-align:center;max-width:680px;margin:0 auto 56px}
+  .sec-tag{
+    display:inline-block;font-size:.82rem;letter-spacing:3px;color:var(--accent);
+    text-transform:uppercase;margin-bottom:12px;
+  }
+  .sec-head h2{font-size:clamp(1.6rem,4vw,2.3rem);font-weight:800;margin-bottom:16px}
+  .sec-head p{color:var(--text-dim)}
+
+  /* ==================== 痛点网格 ==================== */
+  .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .pain{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:24px 20px;transition:.3s;position:relative;
+  }
+  .pain:hover{background:var(--card-hover);transform:translateY(-4px);border-color:rgba(255,122,122,.4)}
+  .pain .pi{
+    width:44px;height:44px;border-radius:12px;flex:none;margin-bottom:14px;
+    background:rgba(255,122,122,.14);border:1px solid rgba(255,122,122,.45);
+    display:flex;align-items:center;justify-content:center;font-size:1.25rem;color:#ff9b9b;
+  }
+  .pain h4{font-size:1.02rem;margin-bottom:8px}
+  .pain p{color:var(--text-dim);font-size:.9rem}
+
+  /* ==================== 双栏图+文 ==================== */
+  .flex-2{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+  .flex-2.flip{direction:rtl}
+  .flex-2.flip > *{direction:ltr}
+  .img-frame{
+    border-radius:var(--radius);overflow:hidden;
+    border:1px solid var(--line);
+    background:var(--bg-deep);
+    box-shadow:0 20px 50px rgba(0,0,0,.45);
+    position:relative;
+  }
+  .img-frame img{width:100%;height:auto;display:block}
+  .img-cap{position:absolute;left:14px;bottom:14px;color:var(--text-dim);font-size:.82rem;background:rgba(8,24,53,.7);padding:4px 10px;border-radius:999px;border:1px solid var(--line)}
+  .img-wrap-text h3{font-size:clamp(1.4rem,3.2vw,1.9rem);font-weight:800;margin-bottom:14px}
+  .img-wrap-text .hl{color:var(--highlight)}
+  .img-wrap-text p{color:var(--text-dim);margin-bottom:14px}
+  .bullets{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+  .bullets li{list-style:none;color:var(--text-dim);padding-left:24px;position:relative;font-size:.95rem}
+  .bullets li::before{
+    content:"";position:absolute;left:0;top:.6em;width:14px;height:2px;background:var(--highlight);border-radius:2px;
+  }
+
+  /* ==================== 卡片通用 ==================== */
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:30px 26px;transition:.3s;position:relative;overflow:hidden;
+  }
+  .card:hover{background:var(--card-hover);transform:translateY(-6px);border-color:rgba(77,159,255,.4)}
+  .card .icon{
+    width:52px;height:52px;border-radius:14px;flex:none;
+    background:linear-gradient(135deg,rgba(77,159,255,.25),rgba(47,111,224,.15));
+    border:1px solid rgba(77,159,255,.35);
+    display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:18px;
+  }
+  .card h3{font-size:1.15rem;margin-bottom:10px}
+  .card p{color:var(--text-dim);font-size:.95rem;margin-bottom:16px}
+  .tags{display:flex;gap:8px;flex-wrap:wrap}
+  .tag{
+    font-size:.75rem;padding:4px 12px;border-radius:999px;
+    border:1px solid rgba(255,217,112,.3);color:var(--highlight);background:rgba(255,217,112,.07);
+  }
+  .tag.blue{border-color:rgba(77,159,255,.35);color:var(--accent);background:rgba(77,159,255,.08)}
+
+  /* ==================== 合作企业 ==================== */
+  .partner{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px 18px;text-align:center;transition:.3s;
+  }
+  .partner:hover{border-color:rgba(255,217,112,.4);background:var(--card-hover);transform:translateY(-4px)}
+  .partner .p-logo{
+    width:54px;height:54px;margin:0 auto 14px;border-radius:50%;
+    background:linear-gradient(135deg,var(--accent),var(--accent-deep));
+    display:flex;align-items:center;justify-content:center;
+    font-weight:800;font-size:1.15rem;color:#fff;
+    box-shadow:0 6px 16px rgba(77,159,255,.3);
+  }
+  .partner b{display:block;font-size:1rem;margin-bottom:4px}
+  .partner span{font-size:.82rem;color:var(--text-dim)}
+
+  /* ==================== 成就：数据条 + 时间线 ==================== */
+  .achievements{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:60px}
+  .achv{
+    text-align:center;background:var(--card);border:1px solid var(--line);
+    border-radius:var(--radius);padding:26px 16px;
+  }
+  .achv b{display:block;font-size:clamp(1.8rem,3.6vw,2.4rem);color:var(--highlight);font-weight:800}
+  .achv span{font-size:.88rem;color:var(--text-dim)}
+
+  .timeline{position:relative;max-width:760px;margin:0 auto;padding-left:30px}
+  .timeline::before{
+    content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;
+    background:linear-gradient(180deg,var(--accent),rgba(77,159,255,.1));
+  }
+  .tl-item{position:relative;padding:0 0 28px 26px}
+  .tl-item:last-child{padding-bottom:0}
+  .tl-item::before{
+    content:"";position:absolute;left:-30px;top:8px;width:14px;height:14px;border-radius:50%;
+    background:var(--bg);border:3px solid var(--accent);
+    box-shadow:0 0 0 4px rgba(77,159,255,.18);
+  }
+  .tl-item .year{color:var(--highlight);font-weight:800;font-size:1.05rem}
+  .tl-item h4{margin:4px 0 6px;font-size:1.05rem}
+  .tl-item p{color:var(--text-dim);font-size:.93rem}
+
+  /* ==================== 团队成员 ==================== */
+  .members{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .member{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px 18px;text-align:center;transition:.3s;
+  }
+  .member:hover{background:var(--card-hover);transform:translateY(-4px)}
+  .member .avatar{
+    width:60px;height:60px;margin:0 auto 12px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:800;font-size:1.1rem;color:#081835;
+    background:linear-gradient(135deg,var(--highlight),#ffb84d);
+    box-shadow:0 6px 18px rgba(255,217,112,.25);
+  }
+  .member b{display:block;font-size:1rem}
+  .member .role{font-size:.84rem;color:var(--accent);margin-top:4px;display:block}
+
+  /* ==================== 顾问卡片 ==================== */
+  .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+  .advisor{
+    display:flex;gap:18px;align-items:flex-start;
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:24px;transition:.3s;
+  }
+  .advisor:hover{background:var(--card-hover);transform:translateY(-4px)}
+  .advisor .ava{
+    width:54px;height:54px;flex:none;border-radius:14px;
+    background:linear-gradient(135deg,var(--accent),var(--accent-deep));
+    display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:#fff;
+  }
+  .advisor b{display:block;margin-bottom:4px;font-size:1.05rem}
+  .advisor .sub{color:var(--highlight);font-size:.85rem;display:block;margin-bottom:8px}
+  .advisor p{color:var(--text-dim);font-size:.92rem}
+
+  /* ==================== 应用场景网格 ==================== */
+  .grid-3-apps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .app{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:28px 24px;transition:.3s;position:relative;overflow:hidden;
+  }
+  .app:hover{background:var(--card-hover);transform:translateY(-6px);border-color:rgba(77,159,255,.4)}
+  .app .ic{
+    width:50px;height:50px;border-radius:12px;flex:none;
+    background:rgba(77,159,255,.15);border:1px solid rgba(77,159,255,.4);
+    display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:16px;
+  }
+  .app h4{font-size:1.05rem;margin-bottom:8px}
+  .app p{color:var(--text-dim);font-size:.92rem}
+
+  /* ==================== 图片廊 ==================== */
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .gallery a{display:block;position:relative;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);aspect-ratio:4/3}
+  .gallery img{width:100%;height:100%;object-fit:cover;transition:.4s}
+  .gallery a:hover img{transform:scale(1.06)}
+  .gallery a::after{
+    content:attr(data-cap);position:absolute;left:0;right:0;bottom:0;padding:14px 16px;
+    background:linear-gradient(180deg,transparent,rgba(8,24,53,.92));
+    color:var(--text);font-size:.9rem;letter-spacing:.5px;
+  }
+
+  /* ==================== 页脚 ==================== */
+  footer{
+    background:var(--bg-deep);border-top:1px solid var(--line);
+    padding:44px 0 30px;
+  }
+  .foot-grid{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;margin-bottom:30px}
+  .foot-grid h5{font-size:1rem;margin-bottom:12px;color:var(--highlight)}
+  .foot-grid p,.foot-grid a{color:var(--text-dim);font-size:.92rem}
+  .foot-grid a:hover{color:#fff}
+  .copyright{text-align:center;color:rgba(255,255,255,.35);font-size:.85rem;border-top:1px solid var(--line);padding-top:22px}
+
+  #toTop{
+    position:fixed;right:22px;bottom:26px;z-index:90;
+    width:46px;height:46px;border-radius:50%;border:0;cursor:pointer;
+    background:linear-gradient(135deg,var(--accent),var(--accent-deep));color:#fff;font-size:1.15rem;
+    box-shadow:0 8px 22px rgba(77,159,255,.4);
+    opacity:0;pointer-events:none;transition:.3s;
+  }
+  #toTop.show{opacity:1;pointer-events:auto}
+  #toTop:hover{transform:translateY(-3px)}
+
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+  body.edit-mode .reveal{opacity:1;transform:none;transition:none}
+
+  /* ==================== 可视化编辑模式 ==================== */
+  #editBar{
+    position:fixed;left:18px;bottom:22px;z-index:200;
+    display:flex;flex-direction:column;gap:10px;
+  }
+  #editBar button{
+    width:48px;height:48px;border-radius:50%;border:0;cursor:pointer;
+    font-size:1.25rem;color:#fff;
+    background:linear-gradient(135deg,var(--accent),var(--accent-deep));
+    box-shadow:0 8px 20px rgba(47,111,224,.45);
+    transition:.25s;display:flex;align-items:center;justify-content:center;
+  }
+  #editBar button:hover{transform:translateY(-3px)}
+  #editBar button.on{background:linear-gradient(135deg,var(--highlight),#ffb84d);color:#081835}
+
+  #editTip{
+    position:fixed;top:calc(var(--nav-h) + 10px);left:50%;transform:translateX(-50%);
+    z-index:200;display:none;
+    background:rgba(255,217,112,.95);color:#4a3500;
+    font-size:.85rem;font-weight:600;
+    padding:8px 20px;border-radius:999px;box-shadow:0 6px 18px rgba(0,0,0,.3);
+    max-width:92vw;text-align:center;
+  }
+  body.edit-mode #editTip{display:block}
+
+  body.edit-mode [contenteditable="true"]{outline:1px dashed rgba(255,217,112,.0);border-radius:4px;transition:.2s}
+  body.edit-mode [contenteditable="true"]:hover{outline-color:rgba(255,217,112,.8);background:rgba(255,217,112,.06)}
+  body.edit-mode [contenteditable="true"]:focus{outline:2px solid var(--highlight);background:rgba(255,217,112,.10)}
+
+  body.edit-mode section[id]{outline:1px dashed rgba(77,159,255,.5);outline-offset:-1px;position:relative}
+  .mod-tools{position:absolute;top:14px;right:16px;z-index:5;display:flex;gap:8px}
+  .mod-tools button{
+    border:0;cursor:pointer;font-size:.78rem;font-weight:700;
+    padding:6px 12px;border-radius:999px;color:#081835;
+    background:var(--highlight);box-shadow:0 4px 12px rgba(0,0,0,.35);
+  }
+  .mod-tools button.danger{background:#ff7a7a;color:#fff}
+
+  body.edit-mode .card,body.edit-mode .pain,body.edit-mode .partner,
+  body.edit-mode .member,body.edit-mode .advisor,body.edit-mode .app,
+  body.edit-mode .achv,body.edit-mode .tl-item{position:relative}
+  .card-tools{
+    position:absolute;top:8px;right:8px;z-index:5;display:flex;gap:6px;opacity:0;transition:.2s;
+  }
+  .pain:hover .card-tools,.card:hover .card-tools,.partner:hover .card-tools,.member:hover .card-tools,
+  .advisor:hover .card-tools,.app:hover .card-tools,.achv:hover .card-tools,.tl-item:hover .card-tools{opacity:1}
+  .card-tools button{
+    width:28px;height:28px;border-radius:50%;border:0;cursor:pointer;font-size:.85rem;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--highlight);color:#081835;box-shadow:0 3px 10px rgba(0,0,0,.35);
+  }
+  .card-tools button.del{background:#ff7a7a;color:#fff}
+
+  .add-card{
+    border:2px dashed rgba(255,217,112,.45);background:rgba(255,217,112,.05);
+    color:var(--highlight);border-radius:var(--radius);
+    padding:14px;font-size:.95rem;font-weight:700;cursor:pointer;transition:.25s;
+  }
+  .add-card:hover{background:rgba(255,217,112,.15)}
+
+  .nav-tools{display:flex;gap:6px;margin-left:6px}
+  .nav-tools button{
+    width:26px;height:26px;border-radius:50%;border:0;cursor:pointer;font-size:.8rem;
+    background:var(--highlight);color:#081835;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .nav-tools button.del{background:#ff7a7a;color:#fff}
+
+  #toast{
+    position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(.9);
+    z-index:300;opacity:0;pointer-events:none;transition:.3s;
+    background:rgba(13,33,73,.96);border:1px solid rgba(255,217,112,.5);
+    color:#fff;font-size:1.05rem;font-weight:600;
+    padding:18px 36px;border-radius:16px;box-shadow:0 20px 50px rgba(0,0,0,.5);
+  }
+  #toast.show{opacity:1;transform:translate(-50%,-50%) scale(1)}
+
+  /* ==================== 响应式 ==================== */
+  @media (max-width: 900px){
+    .grid-4{grid-template-columns:repeat(2,1fr)}
+    .grid-3,.grid-3-apps,.achievements,.members{grid-template-columns:repeat(2,1fr)}
+    .flex-2{grid-template-columns:1fr;gap:30px}
+    .flex-2.flip{direction:ltr}
+    .gallery{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (max-width: 640px){
+    section.module{padding:64px 0}
+    .burger{display:block}
+    .nav-links{
+      position:fixed;top:var(--nav-h);left:0;right:0;
+      flex-direction:column;gap:0;align-items:stretch;
+      background:rgba(8,24,53,.97);backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--line);
+      max-height:0;overflow:hidden;transition:max-height .35s ease;
+    }
+    .nav-links.open{max-height:480px}
+    .nav-links a{display:block;padding:14px 28px;border-radius:0;border-bottom:1px solid rgba(255,255,255,.05)}
+    .grid-4,.grid-3,.grid-3-apps,.grid-2,.members,.achievements,.gallery{grid-template-columns:1fr}
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .btns .btn{width:100%;justify-content:center}
+    .foot-grid{flex-direction:column}
+    .mod-tools{top:6px;right:8px}
+    .mod-tools button{padding:4px 9px;font-size:.72rem}
+  }
+</style>
+</head>
+<body>
+
+<div id="site">
+
+<!-- ==================== 顶部导航 ==================== -->
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#home" data-nav>
+      <span class="mark">天</span>
+      <span class="logo-text">天一<em>无缝</em></span>
+    </a>
+    <button class="burger" id="burger" aria-label="打开菜单">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" class="active">首页</a></li>
+      <li><a href="#origin">项目缘起</a></li>
+      <li><a href="#product">产品介绍</a></li>
+      <li><a href="#tech">核心技术</a></li>
+      <li><a href="#applications">应用场景</a></li>
+      <li><a href="#fieldwork">实践走访</a></li>
+      <li><a href="#achievements">团队成就</a></li>
+      <li><a href="#team">团队介绍</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- ==== 模块开始：Hero 首屏 ==== -->
+<section class="hero" id="home">
+  <div class="wrap hero-inner">
+    <span class="badge">TIAN YI · 海下蓄能器胶囊的国产领航者</span>
+    <h1>这里是<span class="hl">天一无缝</span>团队的<br>秘密基地</h1>
+    <p class="sub">
+      湖南科技大学学生团队。我们用<span class="hl">无缝一体成型</span>工艺，
+      打造打破三十年海外垄断的国产深海蓄能胶囊。
+    </p>
+    <div class="btns">
+      <a class="btn btn-primary" href="#tech">看核心数据 →</a>
+      <a class="btn btn-ghost" href="#team">认识团队</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><b class="counter" data-num="70">0</b><span>万次 · 疲劳寿命</span></div>
+      <div class="stat"><b class="counter" data-num="94">0</b><span>MPa · 承压上限</span></div>
+      <div class="stat"><b class="counter" data-num="3000">0</b><span>米 · 深海工况</span></div>
+      <div class="stat"><b class="counter" data-num="30">0</b><span>年 · 垄断被打破</span></div>
+    </div>
+  </div>
+</section>
+<!-- ==== 模块结束：Hero 首屏 ==== -->
+
+<!-- ==== 模块开始：项目缘起 ==== -->
+<section class="module alt" id="origin">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">Why We Exist</span>
+      <h2>为什么是<span class="hl">天一无缝</span></h2>
+      <p>价值千万的海上钻机，可能被一颗小小的进口胶囊"卡脖子"。</p>
+    </div>
+
+    <!-- 4 个痛点卡片 -->
+    <div class="grid-4">
+      <div class="pain reveal">
+        <div class="pi">💰</div>
+        <h4>价格 3-5 倍</h4>
+        <p>海外品牌垄断 65% 高端市场，进口胶囊价格是国产的 3-5 倍。</p>
+      </div>
+      <div class="pain reveal">
+        <div class="pi">⏳</div>
+        <h4>断供即停机</h4>
+        <p>供货周期长、无备用件，海上停机损失以百万计。</p>
+      </div>
+      <div class="pain reveal">
+        <div class="pi">🔋</div>
+        <h4>寿命跟不上</h4>
+        <p>进口胶囊无故障 30000h+，国产件差距明显。</p>
+      </div>
+      <div class="pain reveal">
+        <div class="pi">🌊</div>
+        <h4>下不了深海</h4>
+        <p>传统粘接工艺承压不足 6MPa，撑不住深海工况。</p>
+      </div>
+    </div>
+
+    <!-- 团队使命 -->
+    <div style="text-align:center;margin-top:50px" class="reveal">
+      <p style="color:var(--text-dim);max-width:680px;margin:0 auto;font-size:1rem">
+        我们的答案：<span class="hl">从材料配方和成型工艺两端同时突破</span>，
+        把"卡脖子"的深海胶囊做成国产标配件。
+      </p>
+    </div>
+  </div>
+</section>
+<!-- ==== 模块结束：项目缘起 ==== -->
+
+<!-- ==== 模块开始：产品介绍 ==== -->
+<section class="module" id="product">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">Product</span>
+      <h2>一颗胶囊的<span class="hl">使命</span></h2>
+      <p>蓄能胶囊是液压系统的"心脏"——储存能量，并在系统需要时瞬间释放。</p>
+    </div>
+
+    <div class="flex-2 reveal">
+      <div class="img-wrap-text">
+        <h3>液压蓄能胶囊 · <span class="hl">无缝一体</span></h3>
+        <p>储氮储能、压降释能，为深海装备提供应急动力、缓冲冲击、稳定压力。关键是：<span class="hl">整体无一条接缝</span>。</p>
+        <ul class="bullets">
+          <li>无粘接成型，根除接缝开裂风险</li>
+          <li>渗漏风险下降 <span class="hl">95%</span>，交付周期缩短 <span class="hl">70%</span></li>
+          <li>疲劳寿命 <span class="hl">70 万次</span> · 承压 <span class="hl">94.5MPa</span></li>
+          <li>工作温域 <span class="hl">-40 ~ 140℃</span></li>
+        </ul>
+      </div>
+      <div class="img-frame">
+        <img src="images/schematic.png" alt="液压蓄能胶囊结构剖面图">
+        <span class="img-cap">胶囊结构剖面 · 核心部件标注</span>
+      </div>
+    </div>
+
+    <!-- 工作原理 4 步 -->
+    <div style="margin-top:80px" class="reveal">
+      <h3 style="text-align:center;font-size:1.4rem;margin-bottom:36px">四步循环 · <span class="hl">能量收放自如</span></h3>
+      <div class="grid-4">
+        <div class="pain reveal" style="border-color:rgba(77,159,255,.4)">
+          <div class="pi" style="background:rgba(77,159,255,.15);border-color:rgba(77,159,255,.45);color:var(--accent)">①</div>
+          <h4>充氮预紧</h4>
+          <p>胶囊充入氮气，建立气压基准。</p>
+        </div>
+        <div class="pain reveal" style="border-color:rgba(77,159,255,.4)">
+          <div class="pi" style="background:rgba(77,159,255,.15);border-color:rgba(77,159,255,.45);color:var(--accent)">②</div>
+          <h4>压缩储能</h4>
+          <p>油压压缩胶囊，氮气转为高压势能。</p>
+        </div>
+        <div class="pain reveal" style="border-color:rgba(77,159,255,.4)">
+          <div class="pi" style="background:rgba(77,159,255,.15);border-color:rgba(77,159,255,.45);color:var(--accent)">③</div>
+          <h4>压降触发</h4>
+          <p>系统压降，势能瞬间转回液压能。</p>
+        </div>
+        <div class="pain reveal" style="border-color:rgba(77,159,255,.4)">
+          <div class="pi" style="background:rgba(77,159,255,.15);border-color:rgba(77,159,255,.45);color:var(--accent)">④</div>
+          <h4>释能复位</h4>
+          <p>能量释放完毕，进入下一循环。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ==== 模块结束：产品介绍 ==== -->
+
+<!-- ==== 模块开始：核心技术 ==== -->
+<section class="module alt" id="tech">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">Core Technology</span>
+      <h2>两项突破，<span class="hl">一组硬数据</span></h2>
+      <p>材料端改性配方 + 工艺端一体成型，传统工艺的每一项短板都被重新定义。</p>
+    </div>
+
+    <!-- 配方研发 -->
+    <div class="flex-2 reveal" style="margin-bottom:64px">
+      <div class="img-frame">
+        <img src="images/ln2-tank.jpg" alt="低温液氮测试装备">
+        <span class="img-cap">液氮极端工况测试</span>
+      </div>
+      <div class="img-wrap-text">
+        <span class="sec-tag">Tech ① · 材料</span>
+        <h3>稀土改性橡胶<span class="hl">配方</span></h3>
+        <p>稀土元素 + 纳米填料改性橡胶基体，让胶囊既耐深海低温、又扛高频疲劳。</p>
+        <ul class="bullets">
+          <li>温域：<span class="hl">-20~100℃ → -40~140℃</span>（拓宽 1.5 倍）</li>
+          <li>寿命：<span class="hl">15万次 → 70万次</span>（提升 4.7 倍）</li>
+          <li>氮气渗透降低 32%，气密性提升 1.4 倍</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 一体成型工艺 -->
+    <div class="flex-2 flip reveal">
+      <div class="img-frame">
+        <img src="images/test-report.jpg" alt="疲劳测试记录">
+        <span class="img-cap">疲劳测试原始记录</span>
+      </div>
+      <div class="img-wrap-text">
+        <span class="sec-tag">Tech ② · 工艺</span>
+        <h3>无粘接<span class="hl">一体成型</span></h3>
+        <p>告别"分段硫化 + 二次粘接"：梯度温控硫化 + 一体化模具，产出整体无接缝的胶囊。</p>
+        <ul class="bullets">
+          <li>承压：<span class="hl">6MPa → 94.5MPa</span>（16 倍）</li>
+          <li>寿命：<span class="hl">8-10 年 → 15 年+</span></li>
+          <li>工时缩减 61%，故障率降低 68%</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 性能对照表 -->
+    <div style="margin-top:80px" class="reveal">
+      <h3 style="text-align:center;font-size:1.4rem;margin-bottom:36px">对标国际品牌 · <span class="hl">三项核心指标</span></h3>
+      <div class="grid-3">
+        <div class="card reveal">
+          <div class="icon">🔁</div>
+          <h3><span class="hl">70 万次</span>疲劳循环</h3>
+          <p>传统工艺的 4.7 倍，对标德国 HYDAC 水平。</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon">🌡️</div>
+          <h3><span class="hl">-40~140℃</span>温域</h3>
+          <p>覆盖深海冷热交变的极端工况。</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon">🛡️</div>
+          <h3><span class="hl">94.5MPa</span>承压</h3>
+          <p>支撑水下 3000 米级钻探荷载。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ==== 模块结束：核心技术 ==== -->
+
+<!-- ==== 模块开始：应用场景 ==== -->
+<section class="module" id="applications">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">Applications</span>
+      <h2>一芯<span class="hl">多用</span></h2>
+      <p>从深海到陆地，同一颗胶囊守护不同装备的液压心脏。</p>
+    </div>
+
+    <div class="grid-3-apps">
+      <div class="app reveal">
+        <div class="ic">🛢️</div>
+        <h4>深海钻探</h4>
+        <p>为防喷器与阀门执行器提供应急动力，吸收钻探载荷脉冲。</p>
+        <div class="tags"><span class="tag">3000m+ 深水</span></div>
+      </div>
+      <div class="app reveal">
+        <div class="ic">💨</div>
+        <h4>风电装备</h4>
+        <p>变桨液压系统升级 18 套，专用胶囊交付 220 套。</p>
+        <div class="tags"><span class="tag">已批量交付</span></div>
+      </div>
+      <div class="app reveal">
+        <div class="ic">🤖</div>
+        <h4>水下机器人</h4>
+        <p>耐海水腐蚀，支撑万米级长期服役。</p>
+        <div class="tags"><span class="tag">深远海</span></div>
+      </div>
+      <div class="app reveal">
+        <div class="ic">🚜</div>
+        <h4>工程机械</h4>
+        <p>缓冲液压冲击，回收制动能量，稳定生产节拍。</p>
+        <div class="tags"><span class="tag">极端工况</span></div>
+      </div>
+      <div class="app reveal">
+        <div class="ic">🚗</div>
+        <h4>汽车制造</h4>
+        <p>吸收液压脉动，稳定高端装备动力输出。</p>
+        <div class="tags"><span class="tag">高端装备</span></div>
+      </div>
+      <div class="app reveal">
+        <div class="ic">🌐</div>
+        <h4>海底观测网</h4>
+        <p>为长期布放的观测节点提供稳定蓄能。</p>
+        <div class="tags"><span class="tag">科考配套</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ==== 模块结束：应用场景 ==== -->
+
+<!-- ==== 模块开始：实践走访 ==== -->
+<section class="module alt" id="fieldwork">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">Fieldwork &amp; Cases</span>
+      <h2>走出实验室，<span class="hl">走进生产线</span></h2>
+      <p>累计调研企业 10+ 家、实地走访 50+ 次——所有结论都来自一线。</p>
+    </div>
+
+    <div class="gallery reveal">
+      <a data-cap="团队技术研讨" href="javascript:void(0)"><img src="images/meeting-room.jpg" alt="团队研讨会"></a>
+      <a data-cap="湘江新区创新创业服务中心" href="javascript:void(0)"><img src="images/xinxing-center.jpg" alt="创新创业服务中心"></a>
+      <a data-cap="工艺方案讨论" href="javascript:void(0)"><img src="images/team-polo.jpg" alt="天一团队讨论"></a>
+      <a data-cap="恒力液压产业基地" href="javascript:void(0)"><img src="images/factory-visit.jpg" alt="厂房调研"></a>
+      <a data-cap="团队合影" href="javascript:void(0)"><img src="images/group-photo.jpg" alt="团队合影"></a>
+      <a data-cap="低温测试现场" href="javascript:void(0)"><img src="images/ln2-tank.jpg" alt="低温测试装备"></a>
+    </div>
+
+    <!-- 三个核心合作案例 -->
+    <div style="margin-top:64px">
+      <div class="grid-3">
+        <div class="card reveal">
+          <div class="icon">🤝</div>
+          <h3>美德橡创 · 联合研发</h3>
+          <p>校企共建模具产线，胶囊成型工艺已实现产业化落地。</p>
+          <div class="tags"><span class="tag">已量产</span></div>
+        </div>
+        <div class="card reveal">
+          <div class="icon">🏭</div>
+          <h3>恒力液压 · 实地研学</h3>
+          <p>走进国家级智能工厂，观摩蓄能器样机，校准工艺方案。</p>
+          <div class="tags"><span class="tag">一线验证</span></div>
+        </div>
+        <div class="card reveal">
+          <div class="icon">🌬️</div>
+          <h3>风电企业 · 批量交付</h3>
+          <p>定制专用胶囊 85 套，进入 2 家重工配套单位名录。</p>
+          <div class="tags"><span class="tag">已交付</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ==== 模块结束：实践走访 ==== -->
+
+<!-- ==== 模块开始：团队成就 ==== -->
+<section class="module" id="achievements">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">Achievements</span>
+      <h2>用<span class="hl">数字</span>说话</h2>
+      <p>每一个数字，都是一趟趟跑出来的。</p>
+    </div>
+
+    <!-- 关键数据 -->
+    <div class="achievements reveal">
+      <div class="achv"><b class="counter" data-num="50" data-plus="1">0</b><span>次实地走访</span></div>
+      <div class="achv"><b class="counter" data-num="500" data-plus="1">0</b><span>次实验记录</span></div>
+      <div class="achv"><b class="counter" data-num="220">0</b><span>套胶囊已交付</span></div>
+      <div class="achv"><b class="counter" data-num="3">0</b><span>项专利申请</span></div>
+    </div>
+
+    <!-- 里程碑时间线 -->
+    <div style="margin-top:60px">
+      <h3 style="text-align:center;font-size:1.3rem;margin-bottom:36px">三年三步 · <span class="hl">从实验室到市场</span></h3>
+      <div class="timeline">
+        <div class="tl-item reveal">
+          <div class="year">2026 · 定型</div>
+          <h4>配方中试 + 工艺定型</h4>
+          <p>70 万次疲劳验证通过，进入小批量试制。</p>
+        </div>
+        <div class="tl-item reveal">
+          <div class="year">2027 · 导入</div>
+          <h4>深海验证 + 供应链导入</h4>
+          <p>通过 3000m 工况验证，与美德橡创联合量产。</p>
+        </div>
+        <div class="tl-item reveal">
+          <div class="year">2028 · 规模</div>
+          <h4>标准制定 + 市场拓展</h4>
+          <p>参与行业标准制定，累计营收目标 821 万元。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ==== 模块结束：团队成就 ==== -->
+
+<!-- ==== 模块开始：团队介绍 ==== -->
+<section class="module alt" id="team">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">Our Team</span>
+      <h2>14 人的<span class="hl">跨学科战队</span></h2>
+      <p>机械 × 材料 × 电气 × 营销，在刘东海教授指导下攻坚国产高端制造。</p>
+    </div>
+
+    <!-- 团队合影 -->
+    <div class="img-frame reveal" style="max-width:880px;margin:0 auto 50px">
+      <img src="images/group-photo.jpg" alt="天一无缝团队合影" style="max-height:420px;object-fit:cover">
+      <span class="img-cap">天一无缝团队合影</span>
+    </div>
+
+    <!-- 核心成员 -->
+    <h3 style="text-align:center;font-size:1.2rem;margin-bottom:30px">核心<span class="hl">成员</span></h3>
+    <div class="members reveal">
+      <div class="member">
+        <div class="avatar">葛</div>
+        <b>葛昀涵</b>
+        <span class="role">负责人</span>
+      </div>
+      <div class="member">
+        <div class="avatar">孙</div>
+        <b>孙捷奇</b>
+        <span class="role">结构设计</span>
+      </div>
+      <div class="member">
+        <div class="avatar">张</div>
+        <b>张锦</b>
+        <span class="role">硫化产线</span>
+      </div>
+      <div class="member">
+        <div class="avatar">谭</div>
+        <b>谭苏宇</b>
+        <span class="role">配方建模</span>
+      </div>
+      <div class="member">
+        <div class="avatar">殷</div>
+        <b>殷子茜</b>
+        <span class="role">智能液压</span>
+      </div>
+      <div class="member">
+        <div class="avatar">程</div>
+        <b>程昱凯</b>
+        <span class="role">工艺评估</span>
+      </div>
+      <div class="member">
+        <div class="avatar">杨</div>
+        <b>杨宁果</b>
+        <span class="role">系统集成</span>
+      </div>
+      <div class="member">
+        <div class="avatar">赵</div>
+        <b>赵芷健</b>
+        <span class="role">复合材料</span>
+      </div>
+      <div class="member">
+        <div class="avatar">赖</div>
+        <b>赖筱铮</b>
+        <span class="role">市场洞察</span>
+      </div>
+      <div class="member">
+        <div class="avatar">周</div>
+        <b>周紫晗</b>
+        <span class="role">财务管理</span>
+      </div>
+      <div class="member">
+        <div class="avatar">技</div>
+        <b>技术研发中心</b>
+        <span class="role">5 人 · 迭代攻坚</span>
+      </div>
+      <div class="member">
+        <div class="avatar">产</div>
+        <b>生产统筹中心</b>
+        <span class="role">4 人 · 稳产交付</span>
+      </div>
+      <div class="member">
+        <div class="avatar">营</div>
+        <b>产品营销中心</b>
+        <span class="role">3 人 · 市场拓展</span>
+      </div>
+      <div class="member">
+        <div class="avatar">管</div>
+        <b>项目管理中心</b>
+        <span class="role">2 人 · 运营把控</span>
+      </div>
+    </div>
+
+    <!-- 专家指导 -->
+    <h3 style="text-align:center;font-size:1.2rem;margin:60px 0 30px">专家<span class="hl">指导</span></h3>
+    <div class="grid-2">
+      <div class="advisor reveal">
+        <div class="ava">刘</div>
+        <div>
+          <b>刘东海 · 教授</b>
+          <span class="sub">湖南科技大学 · 指导老师</span>
+          <p>全国优秀创新创业导师，全程精准指导。</p>
+        </div>
+      </div>
+      <div class="advisor reveal">
+        <div class="ava">葛</div>
+        <div>
+          <b>葛童山 · 市场专家</b>
+          <span class="sub">美德橡创 · 董事</span>
+          <p>研判市场需求，优化定价与落地渠道。</p>
+        </div>
+      </div>
+      <div class="advisor reveal">
+        <div class="ava">何</div>
+        <div>
+          <b>何庆一 · 材料专家</b>
+          <span class="sub">中科院化学所博士</span>
+          <p>材料-结构协同优化与老化建模指导。</p>
+        </div>
+      </div>
+      <div class="advisor reveal">
+        <div class="ava">投</div>
+        <div>
+          <b>投融资与产业顾问</b>
+          <span class="sub">中创投 · 湖南创嗨 · 联合智成</span>
+          <p>提供资金支持与融资指导。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ==== 模块结束：团队介绍 ==== -->
+
+<!-- ==== 模块开始：未来展望 ==== -->
+<section class="module" id="future">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">Future</span>
+      <h2>下一站，<span class="hl">深海</span></h2>
+      <p>深耕核心部件，助力制造强国。</p>
+    </div>
+
+    <div class="grid-3 reveal">
+      <div class="card">
+        <div class="icon">🌊</div>
+        <h3>进入钻探供应链</h3>
+        <p>通过深海工况验证，打破 65% 的海外高端市场垄断。</p>
+      </div>
+      <div class="card">
+        <div class="icon">📐</div>
+        <h3>参与标准制定</h3>
+        <p>从企业标准走向行业与国家标准。</p>
+      </div>
+      <div class="card">
+        <div class="icon">🌏</div>
+        <h3>拓展全球市场</h3>
+        <p>让国产质优方案成为国际市场的新选择。</p>
+      </div>
+    </div>
+
+    <!-- 终极口号 -->
+    <div style="text-align:center;margin-top:64px" class="reveal">
+      <p style="font-size:clamp(1.2rem,3vw,1.7rem);font-weight:800;color:var(--highlight);letter-spacing:2px">
+        打破三十年技术垄断 · 填补高端蓄能胶囊空白
+      </p>
+      <p style="margin-top:14px;color:var(--text-dim);font-size:.95rem">
+        中国国际大学生创新大赛（2026）参赛项目
+      </p>
+    </div>
+  </div>
+</section>
+<!-- ==== 模块结束：未来展望 ==== -->
+
+<!-- ==================== 页脚 ==================== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div style="max-width:340px">
+        <h5>天一无缝团队</h5>
+        <p>来自湖南科技大学的学生科创团队，依托湘江新区大学生创新创业园，立志成为海下蓄能器胶囊的国产领航者。</p>
+      </div>
+      <div>
+        <h5>快捷导航</h5>
+        <p>
+          <a href="#origin">项目缘起</a> ·
+          <a href="#product">产品介绍</a> ·
+          <a href="#tech">核心技术</a> ·
+          <a href="#applications">应用场景</a><br>
+          <a href="#fieldwork">实践走访</a> ·
+          <a href="#achievements">团队成就</a> ·
+          <a href="#team">团队介绍</a> ·
+          <a href="#future">未来展望</a>
+        </p>
+      </div>
+      <div>
+        <h5>联系我们</h5>
+        <p>指导老师：刘东海 教授 · 博士生导师<br>负责人：葛昀涵<br>基地地址：湖南湘江新区 · 岳麓高新区大学生创新创业园</p>
+      </div>
+    </div>
+    <div class="copyright">© 2026 天一无缝团队 · 海下蓄能器胶囊的国产领航者 · 保留所有权利</div>
+  </div>
+</footer>
+
+</div><!-- /#site -->
+
+<!-- ==================== 可视化编辑工具栏 ==================== -->
+<div id="editBar">
+  <button id="btnEdit" title="进入/退出可视化编辑模式">🛠</button>
+  <button id="btnAddModule" title="在页尾前新增一个空白模块" style="display:none">➕</button>
+  <button id="btnSave" title="保存修改到本机浏览器">💾</button>
+  <button id="btnExport" title="导出为最新内容的完整 HTML 文件">📤</button>
+  <button id="btnReset" title="清空本地修改，恢复初始模板">♻️</button>
+</div>
+<div id="editTip">✏️ 编辑模式：直接点击文字修改 · 悬停卡片可复制/删除 · 板块右上角可增删移动</div>
+<div id="toast"></div>
+
+<button id="toTop" aria-label="返回顶部">↑</button>
+
+<script>
+/* ==================================================================
+   天一无缝单页 · 脚本
+   1) 汉堡菜单  2) 滚动动画  3) 数字滚动  4) 导航高亮/返回顶部
+   5) 可视化编辑模式
+   ================================================================== */
+(function(){
+  'use strict';
+  var STORE_KEY = 'tianyi_page_v1';
+  var site   = document.getElementById('site');
+  var burger = document.getElementById('burger');
+  var navUl  = document.getElementById('navLinks');
+  var toast  = document.getElementById('toast');
+
+  function $$(s,c){ return Array.prototype.slice.call((c||document).querySelectorAll(s)); }
+  function showToast(msg){
+    toast.textContent = msg; toast.classList.add('show');
+    clearTimeout(showToast.t);
+    showToast.t = setTimeout(function(){ toast.classList.remove('show'); }, 1800);
+  }
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(m){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]; }); }
+
+  /* 1. 汉堡菜单 */
+  burger.addEventListener('click', function(){
+    burger.classList.toggle('open'); navUl.classList.toggle('open');
+  });
+  navUl.addEventListener('click', function(e){
+    if(e.target.closest('a')){ burger.classList.remove('open'); navUl.classList.remove('open'); }
+  });
+
+  /* 2. 滚动进场动画 */
+  var revealIO = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); revealIO.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+
+  /* 3. 数字滚动 */
+  function bindCounters(){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(!e.isIntersecting) return;
+        var el = e.target, target = parseInt(el.dataset.num, 10) || 0;
+        var plus = (el.dataset.plus === '1');
+        var cur = 0, step = Math.max(1, Math.round(target / 40));
+        var timer = setInterval(function(){
+          cur += step;
+          if(cur >= target){ cur = target; clearInterval(timer); }
+          el.textContent = cur + (plus ? '+' : '');
+        }, 35);
+        io.unobserve(el);
+      });
+    }, { threshold: 0.6 });
+    $$('.counter', site).forEach(function(el){ io.observe(el); });
+  }
+
+  /* 4. 导航高亮 + 返回顶部 */
+  var toTop = document.getElementById('toTop');
+  function onScroll(){
+    var pos = window.scrollY + 120;
+    var currentId = '';
+    $$('section[id]', site).forEach(function(s){ if(s.offsetTop <= pos) currentId = s.id; });
+    $$('.nav-links a', site).forEach(function(a){
+      a.classList.toggle('active', a.getAttribute('href') === '#' + currentId);
+    });
+    toTop.classList.toggle('show', window.scrollY > 500);
+  }
+  window.addEventListener('scroll', onScroll, { passive:true });
+  toTop.addEventListener('click', function(){ window.scrollTo({ top:0, behavior:'smooth' }); });
+
+  /* 5. 可视化编辑模式 */
+  var editing = false;
+  var EDITABLE_SEL = '.logo .mark, .logo .logo-text, .logo em, h1, h2, h3, h4, h5, p, span, b, em, a.btn, .badge, .sec-tag, .tag, .year, .tl-item p, .bullets li, .pain p, .app p, .img-cap, .copyright, .foot-grid p';
+  var CARD_SEL = '.card, .pain, .partner, .member, .advisor, .app, .achv, .tl-item';
+  var LIST_SEL = '.grid-4, .grid-3, .grid-3-apps, .grid-2, .members, .achievements, .timeline';
+
+  function makeEditable(on){
+    $$(EDITABLE_SEL, site).forEach(function(el){
+      if(on){ el.setAttribute('contenteditable','true'); el.spellcheck = false; }
+      else  { el.removeAttribute('contenteditable'); }
+    });
+  }
+
+  function injectTools(){
+    $$('section[id]', site).forEach(function(sec){
+      var bar = document.createElement('div');
+      bar.className = 'etool mod-tools';
+      bar.innerHTML =
+        '<button data-act="mod-up" title="上移一个板块">↑</button>' +
+        '<button data-act="mod-down" title="下移一个板块">↓</button>' +
+        '<button data-act="mod-del" class="danger" title="删除整个模块">✕ 删除模块</button>';
+      sec.appendChild(bar);
+    });
+    $$(CARD_SEL, site).forEach(function(card){
+      var bar = document.createElement('div');
+      bar.className = 'etool card-tools';
+      bar.innerHTML =
+        '<button data-act="card-clone" title="复制这张卡片">⧉</button>' +
+        '<button data-act="card-del" class="del" title="删除这张卡片">✕</button>';
+      card.appendChild(bar);
+    });
+    $$(LIST_SEL, site).forEach(function(list){
+      var btn = document.createElement('button');
+      btn.className = 'etool add-card';
+      btn.dataset.act = 'list-add';
+      btn.title = '在列表末尾复制最后一张卡片作为新卡片';
+      btn.textContent = '＋ 新增卡片';
+      list.appendChild(btn);
+    });
+    var tools = document.createElement('li');
+    tools.className = 'etool nav-tools';
+    tools.innerHTML = '<button data-act="link-add" title="新增导航链接">＋</button>';
+    navUl.appendChild(tools);
+    $$('li', navUl).forEach(function(li){
+      var a = li.querySelector('a'); if(!a) return;
+      var del = document.createElement('button');
+      del.className = 'etool nav-del'; del.dataset.act = 'link-del';
+      del.title = '删除此导航链接'; del.textContent = '✕';
+      del.style.cssText = 'margin-left:6px;width:22px;height:22px;border-radius:50%;border:0;cursor:pointer;background:#ff7a7a;color:#fff;font-size:.7rem;vertical-align:middle;';
+      li.appendChild(del);
+    });
+  }
+  function removeTools(){ $$('.etool', site).forEach(function(n){ n.remove(); }); }
+
+  function setEdit(on){
+    editing = on;
+    document.body.classList.toggle('edit-mode', on);
+    document.getElementById('btnEdit').classList.toggle('on', on);
+    document.getElementById('btnAddModule').style.display = on ? 'flex' : 'none';
+    if(on){ injectTools(); makeEditable(true); showToast('已进入编辑模式'); }
+    else  { removeTools(); makeEditable(false); toast.classList.remove('show'); }
+  }
+  document.getElementById('btnEdit').addEventListener('click', function(){ setEdit(!editing); });
+
+  site.addEventListener('click', function(e){
+    if(!editing) return;
+    var a = e.target.closest('a');
+    if(a && !e.target.closest('.etool') && !a.getAttribute('href').startsWith('#')) e.preventDefault();
+  });
+
+  site.addEventListener('click', function(e){
+    if(!editing) return;
+    var btn = e.target.closest('[data-act]');
+    if(!btn) return;
+    e.preventDefault(); e.stopPropagation();
+    var act = btn.dataset.act;
+
+    if(act === 'card-clone'){
+      var c = btn.closest(CARD_SEL);
+      c.parentNode.insertBefore(c.cloneNode(true), c.nextSibling);
+      makeEditable(true);
+    }
+    else if(act === 'card-del'){
+      var c2 = btn.closest(CARD_SEL);
+      if(!confirm('确定删除这张卡片吗？')) return;
+      c2.remove();
+    }
+    else if(act === 'list-add'){
+      var l = btn.closest(LIST_SEL);
+      var cs = l.querySelectorAll(CARD_SEL);
+      var last = cs[cs.length - 1];
+      var copy = last.cloneNode(true);
+      $$('.etool', copy).forEach(function(n){ n.remove(); });
+      copy.classList.remove('in');
+      l.insertBefore(copy, btn);
+      copy.scrollIntoView({behavior:'smooth', block:'center'});
+      var firstText = copy.querySelector('h3,b,h4,.year');
+      if(firstText){ firstText.setAttribute('contenteditable','true'); setTimeout(function(){ firstText.focus(); }, 400); }
+    }
+    else if(act === 'mod-del'){
+      var sec = btn.closest('section[id]'); if(!sec) return;
+      if(!confirm('确定删除整个「' + (sec.querySelector('h2') ? sec.querySelector('h2').innerText : sec.id) + '」模块吗？')) return;
+      var href = '#' + sec.id;
+      $$('.nav-links a', site).forEach(function(a){
+        if(a.getAttribute('href') === href){ if(a.parentNode) a.parentNode.remove(); }
+      });
+      sec.remove(); showToast('模块已删除');
+    }
+    else if(act === 'mod-up' || act === 'mod-down'){
+      var s2 = btn.closest('section[id]');
+      if(act === 'mod-up' && s2.previousElementSibling) s2.parentNode.insertBefore(s2, s2.previousElementSibling);
+      if(act === 'mod-down' && s2.nextElementSibling) s2.parentNode.insertBefore(s2.nextElementSibling, s2);
+      s2.scrollIntoView({behavior:'smooth', block:'start'});
+    }
+    else if(act === 'link-add'){
+      var ids = $$('section[id]', site).map(function(s){ return s.id; });
+      var name = prompt('导航显示文字：'); if(!name) return;
+      var target = prompt('跳转到的板块 ID，可选：' + ids.join(' / '), ids[ids.length-1] || 'home');
+      if(!target) return;
+      target = target.replace(/^#/, '').trim();
+      var li = document.createElement('li');
+      li.innerHTML = '<a href="#' + esc(target) + '">' + esc(name) + '</a>';
+      var toolsLi = navUl.querySelector('.nav-tools');
+      if(toolsLi) navUl.insertBefore(li, toolsLi); else navUl.appendChild(li);
+      var del = document.createElement('button');
+      del.className='etool nav-del'; del.dataset.act='link-del'; del.textContent='✕';
+      del.style.cssText='margin-left:6px;width:22px;height:22px;border-radius:50%;border:0;cursor:pointer;background:#ff7a7a;color:#fff;font-size:.7rem;vertical-align:middle;';
+      li.appendChild(del);
+    }
+    else if(act === 'link-del'){
+      if(confirm('删除这个导航链接吗？')) btn.closest('li').remove();
+    }
+  });
+
+  var MODULE_TPL =
+    '<section class="module" id="mod-{n}">' +
+      '<div class="wrap">' +
+        '<div class="sec-head reveal in">' +
+          '<span class="sec-tag">NEW MODULE</span>' +
+          '<h2>新模块<span class="hl">标题</span></h2>' +
+          '<p>进入编辑模式后点击文字即可修改。</p>' +
+        '</div>' +
+        '<div class="grid-3">' +
+          '<div class="card"><div class="icon">✨</div><h3>卡片标题一</h3><p>点击即可编辑内容。</p></div>' +
+          '<div class="card"><div class="icon">🌱</div><h3>卡片标题二</h3><p>点击即可编辑内容。</p></div>' +
+        '</div>' +
+      '</div>' +
+    '</section>';
+
+  document.getElementById('btnAddModule').addEventListener('click', function(){
+    var n = 1;
+    while(document.getElementById('mod-' + n)) n++;
+    var footer = site.querySelector('footer');
+    var tmp = document.createElement('div');
+    tmp.innerHTML = MODULE_TPL.replace(/\{n\}/g, n);
+    var sec = tmp.firstElementChild;
+    footer.parentNode.insertBefore(sec, footer);
+    var li = document.createElement('li');
+    li.innerHTML = '<a href="#mod-' + n + '">新模块</a>';
+    var toolsLi = $$('.etool.nav-tools', navUl)[0];
+    if(toolsLi){ navUl.insertBefore(li, toolsLi); } else { navUl.appendChild(li); }
+    var del = document.createElement('button');
+    del.className='etool nav-del'; del.dataset.act='link-del'; del.textContent='✕';
+    del.style.cssText='margin-left:6px;width:22px;height:22px;border-radius:50%;border:0;cursor:pointer;background:#ff7a7a;color:#fff;font-size:.7rem;vertical-align:middle;';
+    li.appendChild(del);
+    injectTools();
+    sec.scrollIntoView({behavior:'smooth', block:'start'});
+    showToast('已新增模块');
+  });
+
+  function cleanedSiteHTML(){
+    var c = site.cloneNode(true);
+    $$('.etool', c).forEach(function(n){ n.remove(); });
+    $$('[contenteditable]', c).forEach(function(n){ n.removeAttribute('contenteditable'); n.removeAttribute('spellcheck'); });
+    $$('.nav-links', c).forEach(function(u){ u.classList.remove('open'); });
+    $$('.burger', c).forEach(function(b){ b.classList.remove('open'); });
+    $$('.counter', c).forEach(function(el){
+      var num = parseInt(el.textContent, 10);
+      if(!isNaN(num)) el.dataset.num = num;
+      var plus = /\+/.test(el.textContent) || num >= 10;
+      el.dataset.plus = plus ? '1' : '0';
+      el.textContent = '0';
+    });
+    return c.innerHTML;
+  }
+
+  document.getElementById('btnSave').addEventListener('click', function(){
+    try{ localStorage.setItem(STORE_KEY, cleanedSiteHTML()); showToast('✅ 已保存到本机浏览器'); }
+    catch(err){ showToast('⚠️ 保存失败，请用「导出」功能'); }
+  });
+
+  document.getElementById('btnExport').addEventListener('click', function(){
+    var docClone = document.documentElement.cloneNode(true);
+    var siteInClone = docClone.querySelector('#site');
+    siteInClone.innerHTML = cleanedSiteHTML();
+    var body = docClone.querySelector('body');
+    body.classList.remove('edit-mode');
+    var bar = docClone.querySelector('#editBar');
+    if(bar){ var am = bar.querySelector('#btnAddModule'); if(am) am.style.display='none';
+             var be = bar.querySelector('#btnEdit'); if(be) be.classList.remove('on'); }
+    var t = docClone.querySelector('#toast'); if(t) t.classList.remove('show');
+    var html = '<!DOCTYPE html>\n' + docClone.outerHTML;
+    var blob = new Blob([html], { type:'text/html;charset=utf-8' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = '天一无缝-公司介绍(最新).html';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(a.href); }, 3000);
+    showToast('📤 已导出，请到浏览器下载目录查收');
+  });
+
+  document.getElementById('btnReset').addEventListener('click', function(){
+    if(confirm('确定清空本地已保存的修改、恢复初始模板吗？\n（建议先「导出」备份）')){
+      localStorage.removeItem(STORE_KEY); location.reload();
+    }
+  });
+
+  try{
+    var saved = localStorage.getItem(STORE_KEY);
+    if(saved){ site.innerHTML = saved; }
+  }catch(e){}
+
+  $$('.reveal', site).forEach(function(el){ revealIO.observe(el); });
+  bindCounters();
+  onScroll();
+})();
+</script>
+</body>
+</html>
